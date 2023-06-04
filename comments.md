@@ -30,3 +30,10 @@ V. Create a skeleton app
 2. Create <Home>.
 3. Create <Movies>.
 4. Create <Film>.
+
+VI. Added elements to the skeleton
+1. Create <Cast>.
+2. Create <Reviews>.
+3. npm react-icons.
+4. import { lazy } from 'react';
+5. import { Suspense } from 'react';

@@ -1,8 +1,9 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/">Home</NavLink>
@@ -10,9 +11,11 @@ const Layout = () => {
                 </nav>
             </header>
             <main>
-                <Outlet />
+                <Suspense>
+                    <Outlet />
+                </Suspense>
             </main>
-        </div>
+        </>
     );
 };
 
