@@ -43,3 +43,7 @@ VII. Added queries
 2. npm i notiflix.
 3. fetchMovies.
 4. fetchInfo.
+
+Fixed and added
+1. npm i react-loader-spinner.
+2. <Loader>.

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 
+import Loader from '../../components/loader';
 import MoviesGalleryItem from '../../components/moviesGalleryItem';
 
 import { fetchMovies } from '../../services/themoviedb-api';
@@ -32,7 +33,7 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Home page</h2>
+      {isLoading && <Loader />}
       <ul>
         {movies &&
           movies.map(({ id, title }) => (

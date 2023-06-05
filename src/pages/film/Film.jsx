@@ -5,6 +5,8 @@ import { BsArrowLeft } from 'react-icons/bs';
 
 import Notiflix from 'notiflix';
 
+import Loader from '../../components/loader';
+
 import { fetchInfo } from '../../services/themoviedb-api';
 
 const Film = () => {
@@ -39,6 +41,7 @@ const Film = () => {
         <div>
             <section>
                 <Link to={backLinkLocationRef.current}><p><BsArrowLeft /> Go back</p></Link>
+                {isLoading && <Loader />}
                 <h2>{movie.title}</h2>
                 <img
                     src={movie.poster_path && `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
