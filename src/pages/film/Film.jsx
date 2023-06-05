@@ -22,11 +22,11 @@ const Film = () => {
         try {
         setIsLoading(true);
         fetchInfo(movieId).then(description => {
-            if (description.length === 0) {
-            setIsLoading(false);
+            if (!description) {
+                setIsLoading(false);
             } else {
                 setMovie(() => description);
-            setIsLoading(false);
+                setIsLoading(false);
             }
         });
         } catch (err) {

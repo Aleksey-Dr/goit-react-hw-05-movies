@@ -27,3 +27,15 @@ export async function fetchInfo(id) {
 
   return info;
 };
+
+export async function fetchCast(id) {
+  const optionsURL = `movie/${id}/credits`;
+  const keyURL = `?api_key=${KEY_TO_API}`;
+
+  const url = BASE_URL + optionsURL + keyURL;
+
+  const response = await axios.get(url);
+  const cast = await response.data.cast;
+
+  return cast;
+};

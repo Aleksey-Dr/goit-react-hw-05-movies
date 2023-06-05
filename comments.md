@@ -47,3 +47,5 @@ VII. Added queries
 Fixed and added
 1. npm i react-loader-spinner.
 2. <Loader>.
+
+VIII. Added queries for <Cast>
