@@ -37,3 +37,9 @@ VI. Added elements to the skeleton
 3. npm react-icons.
 4. import { lazy } from 'react';
 5. import { Suspense } from 'react';
+
+VII. Added queries
+1. Create a "services" folder.
+2. npm i notiflix.
+3. fetchMovies.
+4. fetchInfo.
