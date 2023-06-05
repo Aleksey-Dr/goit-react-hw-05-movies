@@ -28,6 +28,21 @@ export async function fetchInfo(id) {
   return info;
 };
 
+export async function fetchReviews(id) {
+  const optionsURL = `movie/${id}/reviews`;
+  const keyURL = `?api_key=${KEY_TO_API}`;
+  const endURL = '&language=en-US'
+
+  const url = BASE_URL + optionsURL + keyURL + endURL;
+
+  const response = await axios.get(url);
+  const reviews = await response.data.results;
+
+  console.log(reviews);
+
+  return reviews;
+};
+
 export async function fetchCast(id) {
   const optionsURL = `movie/${id}/credits`;
   const keyURL = `?api_key=${KEY_TO_API}`;

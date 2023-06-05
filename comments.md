@@ -49,3 +49,5 @@ Fixed and added
 2. <Loader>.
 
 VIII. Added queries for <Cast>
+
+IX. Added queries for <Reviews>
