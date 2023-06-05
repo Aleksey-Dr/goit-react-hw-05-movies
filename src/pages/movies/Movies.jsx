@@ -1,27 +1,60 @@
-// import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-// import { ImSearch } from 'react-icons/im';
+import Notiflix from 'notiflix';
+
+import Searchbar from 'components/searchbar/';
+
+import { fetchSearch } from '../../services/themoviedb-api';
+import MoviesGalleryItem from 'components/moviesGalleryItem/MoviesGalleryItem';
+import Loader from 'components/loader/Loader';
 
 const Movies = () => {
-    const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(false);
+    
+    const term = searchParams.get('term') ?? '';
 
-    // useEffect(() => {
-    //     // http-query
-    // }, []);
+  useEffect(() => {
+    if (term !== '') {
+      try {
+        setIsLoading(true);
+        fetchSearch(term).then(galery => {
+          if (galery.length === 0) {
+            Notiflix.Notify.warning('Nothing found for your request');
+            setIsLoading(false);
+          } else {
+            setMovies(() => [...galery]);
+            setIsLoading(false);
+          }
+        });
+      } catch (err) {
+        setError(true);
+        setIsLoading(false);
+        Notiflix.Notify.failure(
+          'Oops... Something went wrong please try again!'
+        );
+        console.log(error);
+      }
+    }
+  }, [error, term]);
 
-    return (
-        <>
-            <h2>Collection movies</h2>
-            {/* <input type="text" />
-            <button onClick="">
-                <ImSearch size="10" />
-            </button> */}
-        {
-            ['movie-1', 'movie-2', 'movie-3', 'movie-4'].map(movie => {
-            return <Link key={movie} to={ `${movie}` } state={{ from: location }}>{movie}</Link>
-        })}</>
-    );
+  const handleSearcbarSubmit = search => {
+    setSearchParams({ term: search });
+  };
+
+  return (
+    <>
+      <Searchbar onSubmit={handleSearcbarSubmit} />
+      {isLoading && <Loader />}
+      {movies &&
+        movies.map(({ id, title }) => (
+          <MoviesGalleryItem key={id} id={id} title={title} />
+        ))}
+    </>
+  );
 };
 
 export default Movies;

@@ -51,3 +51,5 @@ Fixed and added
 VIII. Added queries for <Cast>
 
 IX. Added queries for <Reviews>
+
+X. Added queries for <Searchbar>

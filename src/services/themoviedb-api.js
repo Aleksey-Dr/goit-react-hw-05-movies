@@ -38,8 +38,6 @@ export async function fetchReviews(id) {
   const response = await axios.get(url);
   const reviews = await response.data.results;
 
-  console.log(reviews);
-
   return reviews;
 };
 
@@ -53,4 +51,17 @@ export async function fetchCast(id) {
   const cast = await response.data.cast;
 
   return cast;
+};
+
+export async function fetchSearch(term) {
+  const optionsURL = `search/movie?query=${term}`;
+  const keyURL = `&api_key=${KEY_TO_API}`;
+  const endURL = '&include_adult=false&language=en-US&page=1'
+
+  const url = BASE_URL + optionsURL + keyURL + endURL;
+
+  const response = await axios.get(url);
+  const search = await response.data.results;
+
+  return search;
 };
